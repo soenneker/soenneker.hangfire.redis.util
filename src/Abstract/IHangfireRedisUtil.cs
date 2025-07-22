@@ -6,7 +6,7 @@ namespace Soenneker.Hangfire.Redis.Util.Abstract;
 /// <summary>
 /// A utility library for Hangfire Redis related operations
 /// </summary>
-public interface IHangfireRedisUtil  
+public interface IHangfireRedisUtil
 {
-    ValueTask DeleteAllHangfireKeysSafe(string prefix, CancellationToken cancellationToken = default);
+    Task DeleteAllHangfireKeysSafe(string prefix, CancellationToken cancellationToken = default);
 }

@@ -24,7 +24,7 @@ public sealed class HangfireRedisUtil : IHangfireRedisUtil
         _logger = logger;
     }
 
-    public async ValueTask DeleteAllHangfireKeysSafe(string prefix, CancellationToken cancellationToken = default)
+    public async Task DeleteAllHangfireKeysSafe(string prefix, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("Deleting all Hangfire keys with prefix: {Prefix} ...", prefix);
 
