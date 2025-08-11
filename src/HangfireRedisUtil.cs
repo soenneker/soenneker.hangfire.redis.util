@@ -43,7 +43,7 @@ public sealed class HangfireRedisUtil : IHangfireRedisUtil
             if (keys is null)
                 return;
 
-            _logger.LogInformation("Deleting {count} keys with {Prefix}* ...", keys.Count, prefix);
+            _logger.LogInformation("Deleting {count} keys with prefix {Prefix} ...", keys.Count, fullPrefix);
 
             foreach (RedisKey key in keys)
             {
