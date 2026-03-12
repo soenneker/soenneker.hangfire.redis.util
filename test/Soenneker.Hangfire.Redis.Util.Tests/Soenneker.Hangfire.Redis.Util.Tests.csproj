@@ -27,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Soenneker.Hangfire.Redis.Util.csproj" />
+        <ProjectReference Include="..\..\src\Soenneker.Hangfire.Redis.Util\Soenneker.Hangfire.Redis.Util.csproj" />
     </ItemGroup>
 
     <ItemGroup>
