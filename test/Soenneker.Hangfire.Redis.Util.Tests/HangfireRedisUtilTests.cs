@@ -1,20 +1,19 @@
-﻿using Soenneker.Hangfire.Redis.Util.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Hangfire.Redis.Util.Abstract;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Hangfire.Redis.Util.Tests;
 
-[Collection("Collection")]
-public sealed class HangfireRedisUtilTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class HangfireRedisUtilTests : HostedUnitTest
 {
     private readonly IHangfireRedisUtil _util;
 
-    public HangfireRedisUtilTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public HangfireRedisUtilTests(Host host) : base(host)
     {
         _util = Resolve<IHangfireRedisUtil>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
