@@ -12,9 +12,9 @@ public interface IHangfireRedisUtil
     /// <summary>
     /// Deletes all hangfire keys safe.
     /// </summary>
-    /// <param name="prefix">The prefix.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
+    /// <param name="prefix">Prefix prepended to generated keys or names.</param>
+    /// <param name="cancellationToken">Token used to cancel the operation.</param>
+    /// <returns>A task that completes after the targeted files have been deleted.</returns>
     Task DeleteAllHangfireKeysSafe(string prefix, CancellationToken cancellationToken = default);
 
     /// <summary>

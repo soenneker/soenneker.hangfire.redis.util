@@ -13,6 +13,8 @@ public static class HangfireRedisUtilRegistrar
     /// <summary>
     /// Adds <see cref="IHangfireRedisUtil"/> as a singleton service. <para/>
     /// </summary>
+    /// <param name="services">Service collection that receives the registration.</param>
+    /// <returns>The same service collection, so additional registrations can be chained.</returns>
     public static IServiceCollection AddHangfireRedisUtilAsSingleton(this IServiceCollection services)
     {
         services.AddRedisServerUtilAsSingleton().TryAddSingleton<IHangfireRedisUtil, HangfireRedisUtil>();
@@ -23,6 +25,8 @@ public static class HangfireRedisUtilRegistrar
     /// <summary>
     /// Adds <see cref="IHangfireRedisUtil"/> as a scoped service. <para/>
     /// </summary>
+    /// <param name="services">Service collection that receives the registration.</param>
+    /// <returns>The same service collection, so additional registrations can be chained.</returns>
     public static IServiceCollection AddHangfireRedisUtilAsScoped(this IServiceCollection services)
     {
         services.AddRedisServerUtilAsScoped().TryAddScoped<IHangfireRedisUtil, HangfireRedisUtil>();
