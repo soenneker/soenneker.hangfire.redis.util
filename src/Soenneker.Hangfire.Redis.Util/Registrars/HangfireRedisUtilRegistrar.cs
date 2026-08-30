@@ -6,12 +6,12 @@ using Soenneker.Redis.Util.Server.Registrars;
 namespace Soenneker.Hangfire.Redis.Util.Registrars;
 
 /// <summary>
-/// A utility library for Hangfire Redis related operations
+/// Registers destructive Hangfire Redis maintenance operations.
 /// </summary>
 public static class HangfireRedisUtilRegistrar
 {
     /// <summary>
-    /// Adds <see cref="IHangfireRedisUtil"/> as a singleton service. <para/>
+    /// Adds <see cref="IHangfireRedisUtil"/> as a singleton service.
     /// </summary>
     /// <param name="services">Service collection that receives the registration.</param>
     /// <returns>The same service collection, so additional registrations can be chained.</returns>
@@ -23,7 +23,7 @@ public static class HangfireRedisUtilRegistrar
     }
 
     /// <summary>
-    /// Adds <see cref="IHangfireRedisUtil"/> as a scoped service. <para/>
+    /// Adds <see cref="IHangfireRedisUtil"/> as a scoped service over the long-lived Redis clients registered by its dependencies.
     /// </summary>
     /// <param name="services">Service collection that receives the registration.</param>
     /// <returns>The same service collection, so additional registrations can be chained.</returns>

@@ -36,7 +36,8 @@ public sealed class HangfireRedisUtilTests : HostedUnitTest
             $"{prefix}job:{deletedJobId}:state", $"{prefix}job:{deletedJobId}:history", $"{prefix}console:{preservedJobId}",
             $"{prefix}console:{deletedJobId}", $"{prefix}succeeded", $"{prefix}deleted", $"{prefix}processing", $"{prefix}failed",
             $"{prefix}awaiting", $"{prefix}schedule", $"{prefix}queue:default", $"{prefix}queue:default:dequeued",
-            $"{prefix}queue:default:dequeued:lock", $"{prefix}queues", $"{prefix}recurring-jobs", $"{prefix}server:test"
+            $"{prefix}queue:default:dequeued:lock", $"{prefix}queues", $"{prefix}recurring-jobs", $"{prefix}server:test",
+            $"{prefix}console-metadata"
         ];
 
         try
@@ -61,6 +62,7 @@ public sealed class HangfireRedisUtilTests : HostedUnitTest
             await database.SetAddAsync(keys[16], "default");
             await database.SortedSetAddAsync(keys[17], "recurring", 1);
             await database.HashSetAsync(keys[18], "StartedAt", "now");
+            await database.StringSetAsync(keys[19], "not a console job key");
 
             long deletedKeys = await _util.DeleteAllJobsExcept(prefix, [preservedJobId], cancellationToken: CancellationToken.None);
 
@@ -81,6 +83,7 @@ public sealed class HangfireRedisUtilTests : HostedUnitTest
             (await database.KeyExistsAsync(keys[16])).Should().BeTrue();
             (await database.KeyExistsAsync(keys[17])).Should().BeTrue();
             (await database.KeyExistsAsync(keys[18])).Should().BeTrue();
+            (await database.KeyExistsAsync(keys[19])).Should().BeTrue();
         }
         finally
         {

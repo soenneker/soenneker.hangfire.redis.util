@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace Soenneker.Hangfire.Redis.Util;
 
-/// <inheritdoc cref="IHangfireRedisUtil"/>
 public sealed class HangfireRedisUtil : IHangfireRedisUtil
 {
     private readonly IRedisServerUtil _redisServerUtil;
@@ -59,7 +58,7 @@ public sealed class HangfireRedisUtil : IHangfireRedisUtil
         long deletedKeys = await _redisServerUtil.RemoveByScan(jobKeyPrefix,
             key => !IsPreservedKey(key.ToString(), jobKeyPrefix.Length, preserved), batchSize, cancellationToken).NoSync();
 
-        string consoleKeyPrefix = $"{prefix}console";
+        string consoleKeyPrefix = $"{prefix}console:";
         deletedKeys += await _redisServerUtil.RemoveByScan(consoleKeyPrefix,
             key => !IsPreservedKey(key.ToString(), consoleKeyPrefix.Length, preserved), batchSize, cancellationToken).NoSync();
 
