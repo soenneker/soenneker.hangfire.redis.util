@@ -22,7 +22,7 @@ public sealed class HangfireRedisUtilTests : HostedUnitTest
     }
 
     [Test]
-    public async Task DeleteAllJobsExcept_should_preserve_selected_job_and_metadata()
+    public async Task DeleteAllJobsExcept_should_preserve_selected_job_and_metadata(CancellationToken cancellationToken)
     {
         const string preservedJobId = "preserved";
         const string deletedJobId = "deleted";
@@ -64,7 +64,7 @@ public sealed class HangfireRedisUtilTests : HostedUnitTest
             await database.HashSetAsync(keys[18], "StartedAt", "now");
             await database.StringSetAsync(keys[19], "not a console job key");
 
-            long deletedKeys = await _util.DeleteAllJobsExcept(prefix, [preservedJobId], cancellationToken: CancellationToken.None);
+            long deletedKeys = await _util.DeleteAllJobsExcept(prefix, [preservedJobId], cancellationToken: cancellationToken);
 
             deletedKeys.Should().Be(4);
             (await database.KeyExistsAsync(keys[0])).Should().BeTrue();
