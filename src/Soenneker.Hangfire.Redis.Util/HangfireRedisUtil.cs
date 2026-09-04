@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Soenneker.Hangfire.Redis.Util;
 
+/// <inheritdoc cref="IHangfireRedisUtil" />
 public sealed class HangfireRedisUtil : IHangfireRedisUtil
 {
     private readonly IRedisServerUtil _redisServerUtil;
