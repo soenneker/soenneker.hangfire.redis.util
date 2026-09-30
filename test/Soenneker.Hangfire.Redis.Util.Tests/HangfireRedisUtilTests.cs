@@ -22,7 +22,7 @@ public sealed class HangfireRedisUtilTests : HostedUnitTest
     }
 
     [Test]
-    public async Task DeleteAllJobsExcept_should_preserve_selected_job_and_metadata(CancellationToken cancellationToken)
+    public async ValueTask DeleteAllJobsExcept_should_preserve_selected_job_and_metadata(CancellationToken cancellationToken)
     {
         const string preservedJobId = "preserved";
         const string deletedJobId = "deleted";
