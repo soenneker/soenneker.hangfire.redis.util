@@ -27,7 +27,7 @@ public sealed class HangfireRedisUtilTests : HostedUnitTest
         const string preservedJobId = "preserved";
         const string deletedJobId = "deleted";
         string prefix = $"{{hangfire-util-test-{Guid.NewGuid():N}}}:";
-        ConnectionMultiplexer connection = await _redisClient.Get(CancellationToken.None);
+        ConnectionMultiplexer connection = await _redisClient.Get(cancellationToken);
         IDatabase database = connection.GetDatabase();
 
         RedisKey[] keys =
